@@ -5,27 +5,62 @@ namespace AlifLesson9HW06._02
     class Program
     {
         static void Main(string[] args)
-        {
-
-            int[] num = new int[] { 5, 2, 6, 9, 4, 2 };
-            string[] str = new string[] { "ant", "bison", "camel", "duck", "elephant" };
-
-            //Console.WriteLine(ArrayHelper.Pop<int>(ref num));
-            //Console.WriteLine(ArrayHelper.Pop<string>(ref str));
-            //for (int i = 0; i < str.Length; i++)
-            //{
-            //    Console.WriteLine(ArrayHelper.Slice<string>(str, 2, 4));
-            //}
-            //Console.WriteLine(ArrayHelper.Slice<string>(str, 2, 4));
-
-            var beginIndex = Convert.ToInt32(Console.ReadLine());
-            //var endIndex = Convert.ToInt32(Console.ReadLine());
-
-            foreach (string i in ArrayHelper.Slice<string>(str, beginIndex))
+        {            
+            string[] str = new string[] { "ant", "bison", "camel", "duck", "elephant" };                     
+            Console.WriteLine(@"Please choose operation you would like to perform: 
+                                    1. Pop
+                                    2. Push
+                                    3. Shift
+                                    4. Unshift
+                                    5. Only with beginning index
+                                    6. With Beginning and ending indexe's
+                                    7. Exit " 
+                                        );            
+            switch (int.Parse(Console.ReadLine()))
             {
+                case 1:
+                    {
+                        Console.WriteLine(ArrayHelper.Pop<string>(ref str));                        
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine("Please enter text");
+                    string text = Console.ReadLine();
+                    Console.WriteLine(ArrayHelper.Push<string>(ref str, text));
+                    break;
+                case 3:
+                    Console.WriteLine(ArrayHelper.Shift<string>(ref str ));
+                    break;
+                case 4:
+                    Console.WriteLine("Please enter text");
+                    string text1 = Console.ReadLine();
+                    Console.WriteLine(ArrayHelper.Push<string>(ref str, text1));
+                    break;
+                case 5:
+                    {
+                        var beginIndex = Convert.ToInt32(Console.ReadLine());
+                        foreach (string i in ArrayHelper.Slice<string>(str, beginIndex))
+                        {
 
-                Console.WriteLine(i);
-            }
+                            Console.WriteLine(i);
+                        }
+                    }
+                    break;
+                case 6:
+                    {
+                        var beginIndex2 = Convert.ToInt32(Console.ReadLine());
+                        var endIndex = Convert.ToInt32(Console.ReadLine());
+                        foreach (string i in ArrayHelper.Slice<string>(str, beginIndex2, endIndex))
+                        {
+
+                            Console.WriteLine(i);
+                        }
+                    }
+                    break;
+                case 7:
+                    return;
+                    break;
+            }                        
         }
 
     }
